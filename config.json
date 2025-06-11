@@ -1,0 +1,27 @@
+{
+    "mcpServers": {
+      "ArxivSearchServer": {
+        "command": "c:\\users\\amarc\\.local\\bin\\uv.EXE",
+        "args": [
+          "run",
+          "--with",
+          "mcp[cli]",
+          "mcp",
+          "run",
+          "C:\\Users\\amarc\\OneDrive\\Desktop\\NewAssignement\\mcp-server-demo\\server\\search.py"
+        ]
+      },
+      "ArxivSummarizerServer": {
+        "command": "c:\\users\\amarc\\.local\\bin\\uv.EXE",
+        "args": [
+          "run",
+          "--with",
+          "mcp[cli]",
+          "mcp",
+          "run",
+          "C:\\Users\\amarc\\OneDrive\\Desktop\\NewAssignement\\mcp-server-demo\\server\\summary.py"
+        ]
+      }
+    }
+  }
+  

@@ -93,40 +93,87 @@ additional/
 └── README.md          # Documentation
 ```
 
-## Best Practices Implemented
+## Document Processing and Q&A Flow
 
-1. **Session Management**
-   - Uses Streamlit's session state for persistence
-   - Implements unique thread IDs for conversation tracking
-   - Maintains user context across sessions
+### Document Processing Pipeline
 
-2. **User Experience**
-   - Clean, intuitive interface
-   - Responsive feedback
-   - Clear error handling
-   - Interactive elements
+```mermaid
+graph TD
+    A[User Request PDF] --> B[Scout Agent Discovery]
+    B --> C[PDF Download]
+    C --> D[Text Extraction]
+    D --> E[Text Chunking]
+    E --> F[FAISS Vector Store]
+    F --> G[Embedding Generation]
+    G --> H[Vector Indexing]
+    
+    I[User Question] --> J[Query Processing]
+    J --> K[Vector Similarity Search]
+    K --> L[Context Retrieval]
+    L --> M[Response Generation]
+    M --> N[Answer to User]
+```
 
-3. **Code Organization**
-   - Separation of concerns
-   - Modular design
-   - Clear documentation
-   - Maintainable structure
+### Process Flow Description
 
-## Future Enhancements
+1. **Document Discovery & Download**
+   - User requests specific PDF documents
+   - Scout Agent searches and discovers relevant PDFs
+   - Downloads PDFs to local storage
 
-1. Add support for multiple conversation threads
-2. Implement advanced memory management
-3. Add export functionality for conversation history
-4. Integrate with external APIs for enhanced capabilities
-5. Add authentication and user management
+2. **Text Processing Pipeline**
+   - PDF text extraction using PyPDF2 or similar
+   - Text chunking for optimal context windows
+   - Chunk size optimization for better retrieval
 
-## Contributing
+3. **Vector Storage & Indexing**
+   - FAISS vector store implementation
+   - Efficient similarity search
+   - Fast retrieval of relevant context
 
-Feel free to contribute to this project by:
-1. Forking the repository
-2. Creating a feature branch
-3. Submitting a pull request
+4. **Question Answering Flow**
+   - User submits question
+   - Query embedding generation
+   - Vector similarity search in FAISS
+   - Context retrieval from most relevant chunks
+   - Response generation using retrieved context
 
-## License
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+## Results and Images
+
+![Screenshot 2025-06-11 144752](https://github.com/user-attachments/assets/e14c58b5-6e97-4efb-ad17-3bb85b0a8f8d)
+![Screenshot 2025-06-10 231130](https://github.com/user-attachments/assets/d7f2ef74-d0f4-4494-bd46-bb2fef18af4f)
+![Screenshot 2025-06-10 230940](https://github.com/user-attachments/assets/5756361f-cc46-43b1-b7fd-a006f075dbc8)
+![Screenshot 2025-06-10 231258](https://github.com/user-attachments/assets/bca836e3-566c-40c2-9cbb-0fb58ad600f2)
+![Screenshot 2025-06-10 230810](https://github.com/user-attachments/assets/9215a01b-0dda-4b07-8fd1-d35cd84d2ae4)
+
+
+### Key Components
+
+1. **Document Processor**
+   - PDF downloader
+   - Text extractor
+   - Chunking engine
+   - Vector store manager
+
+2. **FAISS Integration**
+   - Vector indexing
+   - Similarity search
+   - Context retrieval
+   - Memory-efficient storage
+
+3. **Q&A System**
+   - Query processor
+   - Context retriever
+   - Response generator
+   - Answer formatter
+
+### Benefits
+
+- Efficient document processing
+- Reduced context length through chunking
+- Fast similarity search with FAISS
+- Scalable vector storage
+- Improved response accuracy
+- Memory-efficient operations
+
